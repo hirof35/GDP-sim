@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TypeScript GDP GUI Simulator</title>
+    <style>
+      body { font-family: sans-serif; background: #f3f4f6; margin: 20px; color: #333; }
+      .container { max-width: 900px; margin: 0 auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+      h1 { text-align: center; color: #1f2937; }
+      .dashboard { display: flex; justify-content: space-around; background: #f9fafb; padding: 15px; border: 1px solid #e5e7eb; border-radius: 6px; margin-bottom: 20px; font-weight: bold; }
+      .controls { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; margin-bottom: 20px; }
+      button { padding: 12px; font-size: 14px; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; color: white; transition: opacity 0.2s; }
+      button:hover { opacity: 0.9; }
+      .btn-normal { background: #3b82f6; }
+      .btn-stimulus { background: #10b981; }
+      .btn-rate { background: #f59e0b; }
+      .btn-crisis { background: #ef4444; }
+      .chart-container { position: relative; height: 350px; width: 100%; margin-bottom: 20px; }
+      .log-box { background: #111827; color: #f9fafb; padding: 15px; border-radius: 6px; height: 120px; overflow-y: auto; font-family: monospace; font-size: 13px; line-height: 1.6; }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>📊 GDP上昇・下降シミュレーター</h1>
+
+      <div class="dashboard">
+        <div>年次: <span id="ui-year">-</span>年</div>
+        <div>現在のGDP: <span id="ui-gdp">-</span> 兆円</div>
+      </div>
+
+      <div class="controls">
+        <button id="btn-normal" class="btn-normal">🐾 1年進める (通常)</button>
+        <button id="btn-stimulus" class="btn-stimulus">💰 財政出動 (G増加)</button>
+        <button id="btn-rate" class="btn-rate">🏦 利上げ (金融引き締め)</button>
+        <button id="btn-crisis" class="btn-crisis">💥 経済危機発生</button>
+      </div>
+
+      <div class="chart-container">
+        <canvas id="gdpChart"></canvas>
+      </div>
+
+      <div class="log-box" id="ui-log"></div>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
